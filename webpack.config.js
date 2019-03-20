@@ -11,44 +11,35 @@ module.exports = {
     output: {
       path: __dirname + '/dist/',
       filename: 'src/js/[name][hash].js'
-    },module:{
-        //seccion donde se pondra los cargadores
-
+    },module:{       
         rules:[{
             test: /\.css$/,
             use: [
               {
                 loader: MiniCssExtractPlugin.loader,
-                options: {
-                  // you can specify a publicPath here
-                  // by default it use publicPath in webpackOptions.output
+                options: {              
                   publicPath: '../'
                 }
               },
-              "css-loader"
-            ]
+              "css-loader"]
           },
           {
             test: /\.scss$/,
             use: [
               {
                 loader: MiniCssExtractPlugin.loader,
-                options: {
-                  // you can specify a publicPath here
-                  // by default it use publicPath in webpackOptions.output
+                options: {                  
                   publicPath: '../'
                 }
               },
               "css-loader","sass-loader"
             ]
-          },
-          // transpilacion de codigo a codigo legible por navegadores que soportan em2015
+          },         
           { 
             test: /\.js$/,
             exclude: /node_modules/,
             loader: "babel-loader"
          },
-         //soporte de imagenes y fuentes
          {
           test: /\.(png|jpg|gif|woff|eot|ttf|svg)$/i,
           use: [
@@ -62,7 +53,6 @@ module.exports = {
             ]
 
       },
-      //configuracion para videos
       {
         test: /\.(mp4|webm)$/i,
         use: [
