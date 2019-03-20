@@ -9,7 +9,7 @@ module.exports = {
         main: path.resolve(__dirname,"src/index.js")
     },
     output: {
-      path: __dirname + '/dist/',
+      path: path.resolve(__dirname,'dist'),
       filename: 'src/js/[name][hash].js'
     },module:{       
         rules:[{
@@ -74,7 +74,7 @@ module.exports = {
           template:'./index.html',
           filename: './index.html'
       }),
-      new CleanWebpackPlugin(),
+      //new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: "./src/css/[name].[hash].css",
         chunkFilename: "css/[id].[hash].css"
@@ -83,8 +83,8 @@ module.exports = {
     devServer: {
         host: '0.0.0.0',
         historyApiFallback: true,
-        contentBase: './',
-        port: 3000,
+        contentBase: path.resolve(__dirname,"dist")+"/",
+        port: 4000,
         inline: true
     },
   }
